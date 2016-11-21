@@ -6,17 +6,25 @@ body { margin: 0; }
 	position: absolute;
   width: 100%;
   height: 100%;
-}  
+} 
 
-.s1 {
-	background-image: url(../images/t1-bg.png);
+.swiper-slide {
 	background-position: center;
 	background-size: cover;
 }
 
+.swiper-slide>div {
+	background-position: center; 
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.s1 {
+	background-image: url(../images/t1-bg.png);
+}
+
 .s1 .a01 {
 	position: absolute;
-	// top: 20%;
 	left: 50%;
 	
 	width: 80%;
@@ -25,31 +33,50 @@ body { margin: 0; }
 
 
 	background-image: url(../images/t1-yuan.png);
-	background-position: center; 
-	background-repeat: no-repeat;
-	background-size: contain;
+
 }
 
 .s1 .a02 {
 	position: absolute;
-	// top: 20%;
 	left: 50%;
 
 	width: 90%;
 	height: 100%;
 	margin-left: -45%;
 
-
 	background-image: url(../images/t1-text.png);
 	background-position: center 45%; 
-	background-repeat: no-repeat;
-	background-size: contain;
 }
 
 .s2 {
-	background-image: url(../images/zhiling2.jpg);
-	background-size: cover;
+	background-image: url(../images/t2-bg.png);
 }
+
+.s2 .a01 {
+	position: absolute;
+	top: 5%;
+	left: 50%;
+	
+	width: 80%;
+	height: 50%;
+	margin-left: -40%;
+
+	background-image: url(../images/t2-2.png);
+
+}
+
+.s2 .a02 {
+	position: absolute;
+	left: 50%;
+	bottom: 1%;
+
+	width: 90%;
+	height: 35%;
+	margin-left: -45%;
+
+	background-image: url(../images/t2-3.png);
+}
+
 .s3 {
 	background-image: url(../images/zhiling3.jpg);
 	background-size: cover;
