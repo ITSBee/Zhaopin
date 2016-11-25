@@ -5,16 +5,22 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<title>找的就是你</title>
 	<link rel="stylesheet" href="css/swiper.css">
+	<link rel="stylesheet" href="css/animate.css">
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
+	
+	<div class="music">
+		<div class="bg"></div>
+		<div class="control play"></div>
+	</div>
+	
 	<div class="swiper-container">
-    
+    <div class="arrow" id="arrow"></div>
     <div class="swiper-wrapper">
         <div class="swiper-slide s1">
-        	<div class="a01"></div>
-        	<div class="a02"></div>
+        	<div class="ani a01" swiper-animate-effect="bounceInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"></div>
+        	<div class="ani a02" swiper-animate-effect="bounceIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s"></div>
         </div>
         <div class="swiper-slide s2">
         	<div class="a01"></div>
@@ -29,12 +35,43 @@
     
 	</div>
 
+	
+	<script src="js/jquery-1.8.3.min.js"></script>
 	<script src="js/swiper.js"></script>
-	<script>        
+	<script src="js/swiper.animate1.0.2.min.js"></script>
+	<script>   
+
+
+		$('.control').click(function () {
+			$('.control').toggleClass('play');
+			$('.music').toggleClass('off')
+		});
+
+
+
+
 	  var mySwiper = new Swiper ('.swiper-container', {
 	    direction: 'vertical',
-	    loop: true,
-	  })        
+	    
+	    onInit: function(swiper) { //Swiper2.x的初始化是onFirstInit
+        swiperAnimateCache(swiper); //隐藏动画元素 
+        swiperAnimate(swiper); //初始化完成开始动画
+      },
+      onSlideChangeEnd: function(swiper) {
+        swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+
+        if(mySwiper.isEnd){
+					// var oArrow = document.getElementById('arrow');
+					// oArrow.style.display = 'none';
+					$('#arrow').hide();
+				}else{
+					// var oArrow = document.getElementById('arrow');
+					// oArrow.style.display = 'block';
+					$('#arrow').show();
+				}
+      } 
+	  });
+
   </script>
 </body>
 </html>

@@ -3,16 +3,73 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<style>
-		div {
-			width: 100px;
-			height: 100px;
-			margin: 0 auto;
-			background-color: red;
+		body {
+			background-color: #000;
+		}
+		.music {
+			position: absolute;
+			z-index: 10;
+			top: 0;
+			right: 0;
+			width: 40px;
+			height: 40px;
+		}
+
+		.bg,
+		.control {
+			position: absolute;
+
+			-webkit-background-size: contain;
+			background-size: contain;
+		}
+		.bg {
+			top: 20px;
+			right: 20px;
+			width: 40px;
+			height: 40px;
+			background-image: url(images/music.gif);
+		}	
+		.control {
+			top: 36px;
+			right: 36px;
+			width: 30px;
+			height: 30px;
+			background-image: url(images/music_off.png);
+		}
+		.play {
+			animation: myplay 1s linear infinite;
+		}
+		
+		.off .bg {
+			background-image: url('');
+		}
+
+		
+
+		@keyframes myplay {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(360deg);
+			}
 		}
 	</style>
 </head>
 <body>
-	<div></div>
+	<div class="music">
+		<div class="bg"></div>
+		<div class="control play"></div>
+	</div>
+
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<script>
+		$('.control').click(function () {
+			$('.control').toggleClass('play');
+			$('.music').toggleClass('off')
+		});
+	</script>
 </body>
 </html>
