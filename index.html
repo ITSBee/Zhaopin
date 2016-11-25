@@ -13,6 +13,7 @@
 	<div class="music">
 		<div class="bg"></div>
 		<div class="control play"></div>
+		<audio id="media" src="images/music.mp3" autoplay="autoplay" ></audio>
 	</div>
 	
 	<div class="swiper-container">
@@ -46,8 +47,42 @@
 			$('.control').toggleClass('play');
 			$('.music').toggleClass('off')
 		});
+		// 音乐
+		var audio = $('#media');
+		var isPlaying = false;
 
+		function playAudio() {
+		    var audio = $('#media');
+		    if (audio.attr('src') == undefined) {
+		        audio.attr('src', audio.data('src'));
+		    }
+		    audio[0].play();
+		    isPlaying = true;
+		}
 
+		function pauseAudio() {
+		    //ios微信框架固定底部出现偏移
+		    setTimeout(function() {
+		        $(window).scrollTop(1);
+		    }, 0);
+		    audio[0].pause();
+		    isPlaying = false;
+		}
+
+		function audio_switch() {
+		    if (isPlaying) {
+		        //关闭声音
+		        pauseAudio();
+		    }
+		    //开启声音
+		    else {
+		        playAudio();
+		    }
+		}
+		$(function() {
+			playAudio();
+			$(".control").on('click', audio_switch);
+		})
 
 
 	  var mySwiper = new Swiper ('.swiper-container', {
